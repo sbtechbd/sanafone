@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- Mirrored from www.hondatel.in/iframe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 14:49:30 GMT -->
+
+<!-- Mirrored from sanafone.net/iframe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Apr 2018 14:00:17 GMT -->
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>DEMO</title>
+    <style type="text/css" media="screen">
+        <!--
+
+        /* Style and images take for example purposes only from http://www.quicksnapper.com */
+
+        body {
+            font: 1em "Lucida Grande",Lucida,Verdana,sans-serif;
+            font-size: 62.5%;
+            line-height: 1;
+        }
+
+        #sidebar {
+            color: #AFB0B1;
+            float: left;
+            width: 300px;
+            height: 385px;
+        }
+
+            #sidebar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+        .rating {
+            background-image: url(images/info_bar_stars.html);
+            background-repeat: no-repeat;
+            height: 12px;
+            font-size: 1em;
+        }
+
+        .none {
+            background-position: 0px 0px;
+        }
+
+        .four {
+            background-position: 82px -48px;
+        }
+
+        .five {
+            background-position: 82px -60px;
+        }
+
+        .tags {
+            color: #fff;
+            margin: 0.5em;
+        }
+
+            .tags a,
+            .tags span {
+                font-size: 0.8em;
+            }
+
+                .tags a:link,
+                .tags a:visited {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                .tags a:hover,
+                .tags a:active {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+        #sidebar li {
+            height: 35px;
+            overflow: hidden;
+        }
+
+            #sidebar li h5 {
+                color: #A5A9AB;
+                font-size: 1em;
+            }
+
+                #sidebar li h5 a {
+                    color: #A5A9AB;
+                    text-decoration: none;
+                }
+
+            #sidebar li img {
+                float: left;
+            }
+
+            #sidebar li .info {
+                color: #3E4548;
+                font-size: 1em;
+            }
+
+        #sidebar .info a,
+        #sidebar .info a:visited {
+            color: #3E4548;
+            text-decoration: none;
+        }
+
+        #sidebar .spyWrapper {
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #sidebar {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+
+        .tags span,
+        .tags a {
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+        }
+
+        a img {
+            border: 0;
+        }
+
+        -->
+    </style>
+    <script src="jquery-1.2.6.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+$(function () {
+    $('ul.spy').simpleSpy();
+});
+
+(function ($) {
+
+$.fn.simpleSpy = function (limit, interval) {
+    limit = limit || 5;
+    interval = interval || 5000;
+
+    return this.each(function () {
+        // 1. setup
+            // capture a cache of all the list items
+            // chomp the list down to limit li elements
+        var $list = $(this),
+            items = [], // uninitialised
+            currentItem = limit,
+            total = 0, // initialise later on
+            height = $list.find('> li:first').height();
+
+        // capture the cache
+        $list.find('> li').each(function () {
+            items.push('<li>' + $(this).html() + '</li>');
+        });
+
+        total = items.length;
+
+        $list.wrap('<div class="spyWrapper" />').parent().css({ height : height * limit });
+
+        $list.find('> li').filter(':gt(' + (limit - 1) + ')').remove();
+
+        // 2. effect
+        function spy() {
+            // insert a new item with opacity and height of zero
+            var $insert = $(items[currentItem]).css({
+                height : 0,
+                opacity : 0,
+                display : 'none'
+            }).prependTo($list);
+
+            // fade the LAST item out
+            $list.find('> li:last').animate({ opacity : 0}, 1000, function () {
+                // increase the height of the NEW first item
+                $insert.animate({ height : height }, 1000).animate({ opacity : 1 }, 1000);
+
+                // AND at the same time - decrease the height of the LAST item
+                // $(this).animate({ height : 0 }, 1000, function () {
+                    // finally fade the first item in (and we can remove the last)
+                    $(this).remove();
+                // });
+            });
+
+            currentItem++;
+            if (currentItem >= total) {
+                currentItem = 0;
+            }
+
+            setTimeout(spy, interval)
+        }
+
+        spy();
+    });
+};
+
+})(jQuery);
+
+
+
+    </script>
+</head>
+<body>
+    <br />
+    <div id="sidebar">
+        <ul class="spy">
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/india.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/bd.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/bd1.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak1.jpg" title="" /></a>
+
+            </li>
+
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak2.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak3.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak4.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak5.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak01.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak02.jpg" title="" /></a>
+
+            </li>
+
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak03.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak04.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/pak05.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/egy.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/qa.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/nep.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/om.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/uae.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/sau.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/phil.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/in.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/ku.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/is.jpg" title="" /></a>
+
+            </li>
+            <li>
+                <a href="#" title="View round"><img width="250" height="29" src="images/sri.jpg" title="" /></a>
+
+            </li>
+        </ul>
+    </div>
+</body>
+
+<!-- Mirrored from www.hondatel.in/iframe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 14:50:01 GMT -->
+
+<!-- Mirrored from sanafone.net/iframe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Apr 2018 14:00:46 GMT -->
+</html>
